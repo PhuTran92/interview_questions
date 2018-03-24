@@ -140,3 +140,27 @@ Lưu biến dc khai báo với từ khoá Volatile sẽ chỉ dc lưu trên main
 
 Từ khoán c cũng hỗ trợ thread safe. như cho method hoặc block of code.
 [https://www.geeksforgeeks.org/volatile-keyword-in-java/](https://www.geeksforgeeks.org/volatile-keyword-in-java/)
+
+
+RxJava:
+	
+flatmap vs map
+	flatmap return observable
+	map return object
+
+https://android.jlelse.eu/what-should-you-know-about-rx-operators-54716a16b310
+
+merge vs concat: đều dc xử dụng để merge 2 observable lại với nhau 
+điểm khác biệt là concat() emit item tuần tự (observable 1 hết rồi đến observable 2) còn merge emit item ko tuần tự có thì emit liền
+
+merge vs mergeDelayError: merge bình thường thì chỉ còn 1 trong 2 observable notify error thì onError sẽ dc gọi ngược lại mergeDelayError sẽ delay lại error cho đến khi kết thúc emit item. Lưu ý đến cuối cùng onError vẫn dc gọi nếu có xảy ra lỗi
+
+
+zip() là toán tử xử dụng để merge nhiều observable lại với nhau, các kết quả dc emit từ mỗi observable sẽ dc combine và emit lại trong 1 custom class 
+
+combineLatest(): combine giá trị latest dc emit với giá trị mới vừa dc emit
+https://cdn-images-1.medium.com/max/1600/1*iU7OCStGQF2evWT38T2eRg.png
+
+withLatestFrom(): tương tự combineLatest() điểm khác biệt là withLastestFrom chỉ emit item thi original observable source emit an item
+Merges the specified ObservableSource into this ObservableSource sequence by using the resultSelector function only when the source ObservableSource (this instance) emits an item
+https://cdn-images-1.medium.com/max/1600/0*OlgZ-bFg5OOp9MUb.png
