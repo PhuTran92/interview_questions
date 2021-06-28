@@ -1,0 +1,87 @@
+Question 1:
+
+Palindrome Number
+
+Given an integer x, return true if x is palindrome integer.
+
+An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.
+
+Solution: Revert half of the number
+
+public bool IsPalindrome(int x) {
+    // Special cases:
+    // As discussed above, when x < 0, x is not a palindrome.
+    // Also if the last digit of the number is 0, in order to be a palindrome,
+    // the first digit of the number also needs to be 0.
+    // Only 0 satisfy this property.
+    if(x < 0 || (x % 10 == 0 && x != 0)) {
+        return false;
+    }
+
+    int revertedNumber = 0;
+    while(x > revertedNumber) {
+        revertedNumber = revertedNumber * 10 + x % 10;
+        x /= 10;
+    }
+
+    // When the length is an odd number, we can get rid of the middle digit by revertedNumber/10
+    // For example when the input is 12321, at the end of the while loop we get x = 12, revertedNumber = 123,
+    // since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.
+    return x == revertedNumber || x == revertedNumber/10;
+}
+
+
+############################
+
+
+Question 2:
+
+Reverse Integer
+
+Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
+
+Solution: Pop and Push Digits & Check before Overflow
+
+public int reverse(int x) {
+    int rev = 0;
+    while (x != 0) {
+        int pop = x % 10;
+        x /= 10;
+        if (rev > Integer.MAX_VALUE/10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0;
+        if (rev < Integer.MIN_VALUE/10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)) return 0;
+        rev = rev * 10 + pop;
+    }
+    return rev;
+}
+
+
+############################
+
+Question 3:
+
+Two Sum
+
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+Solution: One-pass Hash Table
+
+public int[] twoSum(int[] nums, int target) {
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int complement = target - nums[i];
+        if (map.containsKey(complement)) {
+            return new int[] { map.get(complement), i };
+        }
+        map.put(nums[i], i);
+    }
+    throw new IllegalArgumentException("No two sum solution");
+}
+
+############################
+

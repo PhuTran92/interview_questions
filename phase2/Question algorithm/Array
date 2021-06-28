@@ -1,0 +1,194 @@
+############################
+
+Given a binary array nums, return the maximum number of consecutive 1's in the array
+
+Input: nums = [1,1,0,1,1,1]
+Output: 3
+
+- Solution: loop through array and count number of element equal 1. Everytime meet a number which is not 1 then update answer variable and result counter variable to 0. 
+
+############################
+
+Given an array nums of integers, return how many of them contain an even number of digits.
+
+Input: nums = [12,345,2,6,7896]
+Output: 2
+
+- Solution: loop through array and count number of digits. To detect number of digits in a number divide that number to 10 until it equal to 0. After know the number of digits of that number check if it % 2 == 0 => even number
+
+
+############################
+
+Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+Input: nums = [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+
+- Solution: Need two variable to keep track element move from start and end of array. Because of the nums array already sort in non-decreasing order, all you need to do is compare pow of start element with end element and move the great pow to another array the sink down the input array by increase or decrease two variable to keep track element from start and end of array
+
+
+############################
+
+Given a fixed length array arr of integers, duplicate each occurrence of zero, shifting the remaining elements to the right.
+
+Input: [1,0,2,3,0,4,5,0]
+Output: [1,0,0,2,3,0,0,4]
+
+- Solution: Loop through the array to find the number of zero number and the position of the last element in the array after duplicate zero element (i position).
+Then loop the array once again replace the element at end of array with the element at position i. If you meet an element equal zero than duplicate it.
+
+Note there is special case you need to note is the array doesn't contain any zero number and the element at position i after the first loop equal zero.
+
+############################
+
+You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+
+- Solution: Loop through both array from the end (m and n). Compare element in array nums1 (at position m) and nums2 (at position n), move the element with greater value to the end of array nums1 (length - 1) then reduce the loop position in array contain greater value. Until reach to the start of array nums1 or nums2. Then set all the remain value in array nums1 or nums2 to array nums1.
+
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+
+############################
+
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+
+Input: nums = [3,2,2,3], val = 3
+Output: 2, nums = [2,2,_,_]
+
+- Solution: have a k variable to store the current position need to replace in the original array. Loop through the array find the position have value not equal to input value and replace to k. The increase k by one.
+
+############################
+
+Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
+
+Input: nums = [1,1,2]
+Output: 2, nums = [1,2,_]
+
+- Solution: have a k variable to store the current position need to replace in the original array. Loop through the array find the position have value not equal to the previous value (i and i - 1) and replace to k. The increase k by one.
+
+############################
+
+Given an array arr of integers, check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
+
+More formally check if there exists two indices i and j such that :
+
+Input: arr = [10,2,5,3]
+Output: true
+
+- Solution: Use hashmap to store pow value of each position. With each value in the array check if that value already existed inside the pow hashmap
+
+############################
+
+Given an array of integers arr, return true if and only if it is a valid mountain array.
+
+Recall that arr is a mountain array if and only if:
+
+arr.length >= 3
+There exists some i with 0 < i < arr.length - 1 such that:
+arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
+arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+
+
+Input: arr = [0,3,2,1]
+Output: true
+
+Input: arr = [3,5,5]
+Output: false
+
+Input: arr = [2,1]
+Output: false
+
+- Solution: use while loop count the number of element in increasing order arr[i] < arr[i + 1]. If count value == 0 or count value  == length => false. Else count the number of element in decreasing order arr[i + 1] > arr[i]. If (count value) == length after 2 while loop => mountain array.
+
+############################
+
+Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1.
+
+Input: arr = [17,18,5,4,6,1]
+Output: [18,6,6,6,1,-1]
+
+- Solution: Revert loop from end - 2, end - 1 value is -1. Then from end - 2 keep track of the maximum value to replace.
+
+############################
+
+Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+Note that you must do this in-place without making a copy of the array.
+
+Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+
+- Solution: Have a k value to keep track replace position. Loop through array find position have val not equal 0 then replace to k.
+
+############################
+
+Given an array nums of non-negative integers, return an array consisting of all the even elements of nums, followed by all the odd elements of nums.
+
+- Solution: Have a k value to keep track replace position. Loop through array find position have val % 2 == 0 then replace to k.
+
+############################
+
+A school is trying to take an annual photo of all the students. The students are asked to stand in a single file line in non-decreasing order by height. Let this ordering be represented by the integer array expected where expected[i] is the expected height of the ith student in line.
+
+You are given an integer array heights representing the current order that the students are standing in. Each heights[i] is the height of the ith student in line (0-indexed).
+
+Return the number of indices where heights[i] != expected[i].
+
+Input: heights = [1,1,4,2,1,3]
+Output: 3
+
+heights:  [1,1,4,2,1,3]
+expected: [1,1,1,2,3,4]
+Indices 2, 4, and 5 do not match.
+
+- Solution: Have a array (temp) store the number of that index value appear in the original array. Loop through the original array. Compare the value in the orignal array with the count of index value store in temp. If the value not match then increase the result counter variable. Each time compare reduce the count of index value appear in the original array by one. 
+
+############################
+
+Given integer array nums, return the third maximum number in this array. If the third maximum does not exist, return the maximum number.
+
+Input: nums = [3,2,1]
+Output: 1
+Explanation: The third maximum is 1.
+
+- Solution: Have 3 variable store max1, max2, max3. When update max1 then need to update max2, when update max2 then need to update max3.
+
+############################
+
+Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
+
+Input: nums = [4,3,2,7,8,2,3,1]
+Output: [5,6]
+
+Constraint:
+n == nums.length
+1 <= n <= 105
+1 <= nums[i] <= n
+
+- Solution: Because of n == nums.length and 1 <= nums[i] <= n constraint, you can solve this solution by mark the index appear in array with negative number. For example:
+
+l1: [(4),3,2,-7,8,2,3,1]
+
+l2: [(4),(3),-2,-7,8,2,3,1]
+
+l3: [(4),(-3),(-2),-7,8,2,3,1]
+
+l4: [(4),(-3),(-2),(-7),8,2,-3,1]
+
+l5: [(4),(-3),(-2),(-7),(8),2,-3,-1]
+
+l6: [(4),(-3),(-2),(-7),(8),(2),-3,-1]
+
+l7: [(4),(-3),(-2),(-7),(8),(2),(-3),-1]
+
+l8: [(-4),(-3),(-2),(-7),(8),(2),(-3),(-1)]
+
+
+After loop found the index don't have negative number then increase by 1 because of the array value start from 1
+
+
+
