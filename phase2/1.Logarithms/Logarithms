@@ -1,0 +1,23 @@
+https://www.youtube.com/watch?v=kqVpPSzkTYA&ab_channel=TheOrganicChemistryTutor
+
+
+important: Log(1) = 0
+
+Log(10) = Log[10](10) = 1
+Log(0.0001) = Log[10](0.0001) = -4 => 10(-4) == 0.0001
+Log[7][49] = 2 => 7*7 = 49
+
+
+8^log[8](38) = 38 (8 is self cancelled)
+5^log[5](7) = 7 (5 is self cancelled)
+
+
+3^2 = 9
+3^(-2) = 1/9
+
+Log[3](1/9) = -2
+Log[9](3) = 1/2
+Log[9](1/3) = -1/2
+
+Everytime log have a fraction there will be a negative value. Everytime the value at log greater than the log value (log[9](3)) there will be a fraction.
+
