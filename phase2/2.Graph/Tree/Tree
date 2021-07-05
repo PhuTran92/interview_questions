@@ -1,0 +1,75 @@
+
+3 type of tree Traversal:
+Using recursion or stack or queue
+
+
+ - Pre-order Traversal: Root left right
+ - In-order Traversal: Left Root right
+ - Post-order Traversal: (Most complicate when using stack to travel) Left right Root
+
+stack algorithm direction: after move to the end left node => print. Move to the right node without remove the root node. Travel to the end of right branch. When reach to the root node. Check the root right node is the top node of stack then print the root node.
+
+
+
+Breadth First Search and Depth First Search
+
+https://www.youtube.com/watch?v=pcKY4hjDrxk&ab_channel=AbdulBari
+
+
+Breadth First Search Rules (QUEUE)
+
+Visit all the note connect to visited node, than add to queue. After that pop the next element in queue and check add all the node connect to visit node to queue (Remember check visited node to prevent circle loop). Repeat the circle until all node is visited.
+
+Depth First Search Rules (STACK)
+
+Visit a node in the visited node, then check that node is have connection to others. If yes put it the current visited node to stack. Start explore the new visit node. Do the same process until stack is empty. (Remember check visited node to prevent circle loop)
+
+################################
+
+Given the root of a binary tree, return its maximum depth.
+
+A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+
+Input: root = [3,9,20,null,null,15,7]
+Output: 3
+
+- Solution: Use recursive to count the depth of tree.
+
+################################
+
+Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+Input: root = [1,2,2,3,4,4,3]
+Output: true
+
+- Solution: Use recursive. The method param should receive 2 node => Then check the node val is equal or note. Then recursive check the node val 
+Example: recursiveCheck(n1.left, n2.right) && recursiveCheck(n1.right, n2.left)
+
+################################
+
+Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+
+A leaf is a node with no children.
+
+Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+Output: true
+
+- Solution: Use recursive. The recursive method will sum the value of all path until reach the leaf node which. 
+Example: (root.left == null ? false : recur(root.left, targetSum, total + root.val)) || (root.right == null ? false : recur(root.right, targetSum, total + root.val))
+
+################################
+
+You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+
+Input: root = [1,2,3,4,5,6,7]
+Output: [1,#,2,3,#,4,5,6,7,#]
+Explanation: Given the above perfect binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.
+
+- Solution: The key of this problems is after you assign next pointer for the current node. You move to the left node of that node. Try to reuse the next node already set.
+There are 2 ways to resolve this problem is using recursive and next pointer already set after move to next node. Or using queue to moving to each tree level. Note Queue is optional, there can use a pointer to save the next start node in each level and take the advance of next pointer already assign.
+
+
+
+
+
